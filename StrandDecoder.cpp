@@ -1,11 +1,7 @@
-#include "StrandDecoder.hpp"
+#include "server/StrandDecoder.hpp"
 
-#include <esp_log.h>
-
-static char const TAG[] = "StrandDecoder";
-
-namespace luna
-{
+namespace luna {
+namespace server {
 
 static size_t bitDepthSize(BitDepth depth)
 {
@@ -19,9 +15,18 @@ static size_t bitDepthSize(BitDepth depth)
     }
 }
 
+
+#ifdef _MSC_VER
+#include <intrin.h>
+#endif
+
 static size_t channelCount(uint8_t depth)
 {
+#ifdef _MSC_VER
+    return __popcnt(depth);
+#else
     return __builtin_popcount(depth);
+#endif
 }
 
 void StrandDecoder::decode(uint8_t const * data, size_t length)
@@ -51,7 +56,7 @@ LunaConfiguration StrandDecoder::getConfiguration() const noexcept
     for (auto const & strand : mStrands) {
         luna::StrandConfiguration strandConfig = {
             strand->colorChannels(),
-            strand->pixelCount(),
+            static_cast<uint32_t>(strand->pixelCount()),
             {1000, 200, 300},
             {100, 200, 300},
             strand->bitDepth()
@@ -62,4 +67,5 @@ LunaConfiguration StrandDecoder::getConfiguration() const noexcept
     return config;
 }
 
+}
 }

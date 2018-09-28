@@ -1,16 +1,17 @@
 #pragma once
 
-namespace luna
-{
+namespace luna {
+namespace server {
 
-class CommandListener
+class Listener
 {
 public:
-    virtual ~CommandListener() = default;
+    virtual ~Listener() = default;
     virtual void strandConfigurationRequested() = 0;
     virtual void dataChannelRequested() = 0;
     virtual void dataChannelClosed() = 0;
     virtual void disconnected() = 0;
 };
 
+}
 }

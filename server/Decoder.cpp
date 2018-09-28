@@ -1,15 +1,15 @@
-#include "Decoder.hpp"
+#include "server/Decoder.hpp"
+#include "server/Listener.hpp"
 
 #include "Packets.hpp"
-#include "ByteStream.hpp"
-#include "CommandListener.hpp"
 
 #include <cstdint>
 
 namespace luna {
+namespace server {
 
-Decoder::Decoder(CommandListener * commandListener) :
-    mCommandListener(commandListener)
+Decoder::Decoder(Listener * listener) :
+    mListener(listener)
 {
 }
 
@@ -19,14 +19,15 @@ void Decoder::decode(ByteStream & stream)
     stream >> id;
     switch (id) {
         case LunaConfiguration::id:
-            mCommandListener->strandConfigurationRequested();
+            mListener->strandConfigurationRequested();
             break;
         case DataChannelConfiguration::id:
-            mCommandListener->dataChannelRequested();
+            mListener->dataChannelRequested();
             break;
         default:
             throw std::runtime_error("Unrecognised packet id.");
     }
 }
 
+}
 }

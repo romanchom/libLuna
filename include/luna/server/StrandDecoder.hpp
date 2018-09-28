@@ -3,13 +3,11 @@
 #include "Strand.hpp"
 #include "Packets.hpp"
 
-#include <cstddef>
 #include <cstdint>
-
 #include <vector>
 
-namespace luna
-{
+namespace luna {
+namespace server {
 
 class StrandDecoder
 {
@@ -20,7 +18,7 @@ public:
 
 private:
     std::vector<Strand *> mStrands;
-
 };
 
+}
 }
