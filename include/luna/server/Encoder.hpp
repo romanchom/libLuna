@@ -1,8 +1,8 @@
 #pragma once
 
 #include "../Encoder.hpp"
-#include "Packets.hpp"
-#include "StreamSink.hpp"
+#include "../Packets.hpp"
+#include "../StreamSink.hpp"
 
 namespace luna {
 namespace server {

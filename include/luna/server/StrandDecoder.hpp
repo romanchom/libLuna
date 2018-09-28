@@ -1,7 +1,7 @@
-#pragma once 
+#pragma once
 
-#include "Strand.hpp"
-#include "Packets.hpp"
+#include "../Strand.hpp"
+#include "../Packets.hpp"
 
 #include <cstdint>
 #include <vector>

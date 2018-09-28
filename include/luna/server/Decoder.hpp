@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ByteStream.hpp"
-#include "server/Listener.hpp"
+#include "../ByteStream.hpp"
 #include "../Decoder.hpp"
+#include "Listener.hpp"
 
 namespace luna {
 namespace server {
