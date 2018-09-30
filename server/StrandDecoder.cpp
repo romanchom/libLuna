@@ -48,6 +48,14 @@ void StrandDecoder::addStrand(Strand * strand)
     mStrands.emplace_back(strand);
 }
 
+
+void StrandDecoder::enabled(bool value)
+{
+    for (auto strand : mStrands) {
+        strand->enabled(value);
+    }
+}
+
 LunaConfiguration StrandDecoder::getConfiguration() const noexcept
 {
     LunaConfiguration config;

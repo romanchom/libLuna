@@ -20,6 +20,7 @@ protected:
 public:
     virtual ~Strand() = default;
     virtual void display(uint8_t const * data, size_t length) = 0;
+    virtual void enabled(bool value) = 0;
     size_t pixelCount() const noexcept { return mPixelCount; }
     BitDepth bitDepth() const noexcept { return mBitDepth; }
     ColorChannels colorChannels() const noexcept { return mColorChannels; }
