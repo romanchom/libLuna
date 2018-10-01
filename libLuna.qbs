@@ -30,10 +30,13 @@ StaticLibrary {
             "BitDepth.hpp",
             "ByteStream.hpp",
             "ColorChannels.hpp",
+            "ColorSpace.hpp",
             "Encoder.hpp",
             "Defragmenter.hpp",
             "Packets.hpp",
+            "Point.hpp",
             "Strand.hpp",
+            "StrandConfiguration.hpp",
             "StreamSink.hpp",
         ]
     }
@@ -45,8 +48,8 @@ StaticLibrary {
             "client/Encoder.cpp",
             "server/Decoder.cpp",
             "server/Encoder.cpp",
+            "server/StrandDecoder.cpp",
             "Defragmenter.cpp",
-            "StrandDecoder.cpp",
         ]
     }
 }
