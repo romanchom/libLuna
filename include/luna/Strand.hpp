@@ -1,7 +1,6 @@
 #pragma once
 
-#include "BitDepth.hpp"
-#include "ColorChannels.hpp"
+#include "StrandConfiguration.hpp"
 
 #include <cstdint>
 #include <cstddef>
@@ -12,24 +11,18 @@ namespace luna
 class Strand
 {
 protected:
-    explicit Strand(size_t pixelCount, BitDepth bitDepth, ColorChannels colorChannels) :
-        mPixelCount(pixelCount),
-        mBitDepth(bitDepth),
-        mColorChannels(colorChannels)
+    explicit Strand(StrandConfiguration const & configuration) :
+        mConfiguration(configuration)
     {}
+
 public:
     virtual ~Strand() = default;
     virtual void display(uint8_t const * data, size_t length) = 0;
     virtual void enabled(bool value) = 0;
-    size_t pixelCount() const noexcept { return mPixelCount; }
-    BitDepth bitDepth() const noexcept { return mBitDepth; }
-    ColorChannels colorChannels() const noexcept { return mColorChannels; }
+    StrandConfiguration const & configuration() const noexcept { return mConfiguration; }
 
-    // ColorSpace colorSpace() const noexcept;
-private:
-    size_t const mPixelCount;
-    BitDepth const mBitDepth;
-    ColorChannels const mColorChannels;
+protected:
+    StrandConfiguration mConfiguration;
 };
 
 }

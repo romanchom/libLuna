@@ -4,7 +4,7 @@
 
 namespace luna {
 
-enum class BitDepth : uint8_t {
+enum class BitDepth : uint32_t {
     integer8,
     integer16,
 };

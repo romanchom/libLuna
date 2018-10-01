@@ -32,10 +32,11 @@ static size_t channelCount(uint8_t depth)
 void StrandDecoder::decode(uint8_t const * data, size_t length)
 {
     for (auto const & strand : mStrands) {
+        auto const & config = strand->configuration();
         size_t strandByteCount =
-            strand->pixelCount()
-            * channelCount(strand->colorChannels())
-            * bitDepthSize(strand->bitDepth());
+            config.pixelCount
+            * channelCount(config.colorChannels)
+            * bitDepthSize(config.bitDepth);
 
         strand->display(data, strandByteCount);
 
@@ -62,14 +63,7 @@ LunaConfiguration StrandDecoder::getConfiguration() const noexcept
     auto & strands = config.strands;
     strands.reserve(mStrands.size());
     for (auto const & strand : mStrands) {
-        luna::StrandConfiguration strandConfig = {
-            strand->colorChannels(),
-            static_cast<uint32_t>(strand->pixelCount()),
-            {1000, 200, 300},
-            {100, 200, 300},
-            strand->bitDepth()
-        };
-        strands.emplace_back(strandConfig);
+        strands.emplace_back(strand->configuration());
     }
 
     return config;

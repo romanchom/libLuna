@@ -1,27 +1,13 @@
 #pragma once
 
 #include "ByteStream.hpp"
-#include "BitDepth.hpp"
-#include "ColorChannels.hpp"
+#include "StrandConfiguration.hpp"
 
 #include <vector>
 #include <cstdint>
 
 namespace luna
 {
-
-struct PointMillimeters {
-    int x, y, z;
-};
-
-struct StrandConfiguration {
-    //ColorSpace colorSpace;
-    ColorChannels colorChannels;
-    uint32_t count;
-    PointMillimeters begin;
-    PointMillimeters end;
-    BitDepth bitDepth;
-};
 
 using IdType = uint8_t;
 
