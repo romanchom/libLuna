@@ -1,9 +1,7 @@
 cmake_minimum_required(VERSION 3.0.0)
 
-project(libLuna)
-
 set(CMAKE_CXX_STANDARD 14)
-add_library(${PROJECT_NAME} STATIC
+add_library(libLuna STATIC
     "include/luna/client/Decoder.hpp"
     "include/luna/client/Encoder.hpp"
     "include/luna/client/Listener.hpp"
@@ -31,7 +29,7 @@ add_library(${PROJECT_NAME} STATIC
     "Defragmenter.cpp"
 )
 
-target_include_directories(${PROJECT_NAME}
+target_include_directories(libLuna
     PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include"
     PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/include/luna"
 )
